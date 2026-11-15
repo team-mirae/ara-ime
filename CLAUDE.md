@@ -8,7 +8,7 @@
   [docs/linux.md](docs/linux.md) for what ara does on Linux (where it differs from the Mac). If code
   and docs disagree, the docs win or are updated in the same change. Don't implement **[decide]**
   items silently.
-- **Stay a fork.** Everything outside `linux/`, `docs/linux.md`, `README.md`, `CLAUDE.md`, `.gitignore`
+- **Stay a fork.** Everything outside `linux/`, `docs/linux.md`, `docs/images/icon/ara-*`, `README.md`, `CLAUDE.md`, `.gitignore`
   and `.github/workflows/{linux,sync-upstream}.yml` is bada's: change it upstream in
   team-mirae/bada-ime, not here, so merges stay clean. Upstream comes down through
   `.github/workflows/sync-upstream.yml` (docs/linux.md, "Staying a fork").

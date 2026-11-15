@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <title>ara ime</title>
+  <!-- bada's icon (bada-icon.svg): the same sky, sea, light and keycap colours. bada is a spacebar
+       cruising under the surface; ara (아라, the sea, on Linux) is a penguin diving through it, down
+       to a key on the sea floor. Its beak and feet are the keycap's orange. -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4faff"/>
+      <stop offset="1" stop-color="#a6d5f2"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1273bf"/>
+      <stop offset="0.35" stop-color="#0a4f92"/>
+      <stop offset="0.75" stop-color="#062e62"/>
+      <stop offset="1" stop-color="#03183a"/>
+    </linearGradient>
+    <linearGradient id="ray" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="side" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2774f"/>
+      <stop offset="1" stop-color="#b8432a"/>
+    </linearGradient>
+    <linearGradient id="top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffb089"/>
+      <stop offset="1" stop-color="#ff8a5c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#3fa2e8" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#3fa2e8" stop-opacity="0"/>
+    </radialGradient>
+    <!-- the penguin's back: deep navy, lit from the surface -->
+    <linearGradient id="back" x1="0" y1="-1" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b4566"/>
+      <stop offset="1" stop-color="#0d1828"/>
+    </linearGradient>
+    <linearGradient id="belly" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#cfe3f3"/>
+    </linearGradient>
+    <path id="surface" d="M0 300C90 262 180 258 270 288S450 334 540 300S720 250 810 282S960 318 1024 296"/>
+    <clipPath id="water"><path d="M0 300C90 262 180 258 270 288S450 334 540 300S720 250 810 282S960 318 1024 296V1024H0Z"/></clipPath>
+    <clipPath id="tile"><rect width="1024" height="1024" rx="228"/></clipPath>
+    <!-- the penguin, swimming right (+x), centred on 0,0, about 450 long beak to feet -->
+    <path id="body" d="M-190 0C-150-62-40-98 60-92C132-86 186-46 192 0C186 46 132 82 60 84C-40 90-150 58-190 0Z"/>
+    <g id="penguin">
+      <!-- feet, trailing -->
+      <path d="M-176-8L-246-40Q-252-22-240-4Z" fill="url(#side)"/>
+      <path d="M-176 10L-250 22Q-244 40-226 40Z" fill="url(#side)"/>
+      <use href="#body" xlink:href="#body" fill="url(#back)"/>
+      <!-- the white front, from chin to tail -->
+      <path d="M-178 8C-120 62-20 88 64 82C134 76 176 44 188 8C160 18 126 18 100 10C60 -2 -10 -2 -70 4C-120 8-156 8-178 8Z" fill="url(#belly)"/>
+      <!-- the eye's white patch, the eye, a glint -->
+      <ellipse cx="118" cy="-28" rx="30" ry="22" fill="#ffffff"/>
+      <circle cx="128" cy="-29" r="12" fill="#0d1828"/>
+      <circle cx="133" cy="-33" r="4" fill="#ffffff"/>
+      <!-- beak: the keycap's orange, top then underside -->
+      <path d="M180-16L262 2L184 6Z" fill="url(#top)"/>
+      <path d="M184 6L262 2L182 20Z" fill="#b8432a"/>
+      <!-- the flipper, swept back -->
+      <path d="M52-30C10-24-70 6-150 64C-130 66-60 44 50 0Z" fill="#1c3049"/>
+      <path d="M52-30C10-24-70 6-150 64" fill="none" stroke="#3a5a80" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+    </g>
+    <!-- a 1u keycap (u = 180), centred on 0,0: its sides, then its top -->
+    <g id="cap">
+      <rect x="-90" y="-90" width="180" height="180" rx="34" fill="url(#side)"/>
+      <rect x="-68" y="-84" width="136" height="132" rx="26" fill="url(#top)"/>
+    </g>
+    <rect id="cap-shape" x="-90" y="-90" width="180" height="180" rx="34"/>
+  </defs>
+
+  <g clip-path="url(#tile)">
+    <rect width="1024" height="1024" fill="url(#sky)"/>
+    <path d="M0 300C90 262 180 258 270 288S450 334 540 300S720 250 810 282S960 318 1024 296V1024H0Z" fill="url(#sea)"/>
+
+    <!-- light from the surface, clipped to the water -->
+    <g clip-path="url(#water)">
+      <path d="M160 200L260 200L120 1024L-60 1024Z" fill="url(#ray)"/>
+      <path d="M432 200L502 200L460 1024L300 1024Z" fill="url(#ray)" opacity="0.8"/>
+      <path d="M745 200L815 200L960 1024L800 1024Z" fill="url(#ray)" opacity="0.7"/>
+    </g>
+
+    <!-- the key on the sea floor, where the penguin is headed -->
+    <g transform="translate(792 818) rotate(14)">
+      <ellipse rx="210" ry="160" fill="url(#glow)"/>
+      <use href="#cap" xlink:href="#cap"/>
+    </g>
+
+    <!-- the penguin, diving down and right -->
+    <g transform="translate(548 560) rotate(48)">
+      <ellipse rx="300" ry="170" fill="url(#glow)"/>
+      <use href="#penguin" xlink:href="#penguin"/>
+    </g>
+
+    <!-- the water over what's in it: the deeper, the bluer -->
+    <g clip-path="url(#water)" fill="#2a8fdc">
+      <use href="#body" xlink:href="#body" transform="translate(548 560) rotate(48)" opacity="0.12"/>
+      <use href="#cap-shape" xlink:href="#cap-shape" transform="translate(792 818) rotate(14)" opacity="0.28"/>
+    </g>
+
+    <!-- the surface, and the splash where it went in -->
+    <use href="#surface" xlink:href="#surface" fill="none" stroke="#ffffff" stroke-width="22" stroke-linecap="round"/>
+    <g fill="none" stroke="#ffffff" stroke-linecap="round">
+      <path d="M232 262C250 226 262 196 258 160" stroke-width="14"/>
+      <path d="M300 250C306 206 320 170 344 140" stroke-width="16"/>
+      <path d="M362 268C384 236 410 214 444 200" stroke-width="12"/>
+    </g>
+    <g fill="#ffffff">
+      <circle cx="248" cy="128" r="11"/>
+      <circle cx="356" cy="112" r="13"/>
+      <circle cx="466" cy="182" r="9"/>
+      <circle cx="206" cy="196" r="7"/>
+      <circle cx="404" cy="160" r="6"/>
+    </g>
+
+    <!-- bubbles in its wake, from the splash down to its feet -->
+    <g fill="none" stroke="#ffffff" stroke-width="7" opacity="0.75">
+      <circle cx="318" cy="350" r="15"/>
+      <circle cx="360" cy="384" r="11"/>
+      <circle cx="334" cy="414" r="8"/>
+      <circle cx="388" cy="430" r="7"/>
+    </g>
+    <g fill="#ffffff" opacity="0.5">
+      <circle cx="290" cy="392" r="5"/>
+      <circle cx="372" cy="342" r="4"/>
+      <circle cx="404" cy="396" r="4"/>
+    </g>
+
+    <!-- the deep -->
+    <path d="M0 960C140 940 280 946 420 962S700 980 840 960S980 944 1024 950" fill="none"
+          stroke="#ffffff" stroke-width="8" stroke-linecap="round" opacity="0.12"/>
+  </g>
+</svg>

@@ -1,7 +1,7 @@
 ### <br>
 
 <p align="center">
-  <img src="docs/images/icon/bada-icon.svg" width="96" height="96" alt="ara ime icon">
+  <img src="docs/images/icon/ara-icon.svg" width="96" height="96" alt="ara ime icon">
 
   <h3 align="center">
 	아라 입력기 · アラIME
