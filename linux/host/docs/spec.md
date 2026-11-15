@@ -203,7 +203,9 @@ Then:
   labels; `notes` are the candidates' comments (IBus: after the text); `horizontal` is the layout
   hint / orientation. Choosing a row does nothing (the contract has none). **Lost** against
   Windows: the separating line, and `japanese` rows in a Japanese font.
-- **Focus** (e2e): leaving a field commits what's staged. Fcitx5: the engine flushes on `reset`.
+- **Focus** (e2e): leaving a field commits what's staged, once. Fcitx5: the engine flushes on
+  `reset`, and the preedit is marked `DontCommit`, as Fcitx5 (or a client with
+  `ClientUnfocusCommit`) would otherwise commit it too at focus out (e2e, fcitx5 5.1.12: the text twice).
   IBus: the preedit is shown in `PREEDIT_COMMIT` mode and the client commits it, because ibus-daemon
   detaches a global engine from a context as focus leaves and a commit sent then is lost (e2e,
   ibus 1.5.32); the engine flushes into nothing. Where the engine's `staged` differs from what shows,

@@ -59,7 +59,10 @@ public:
         fcitx::Text preedit;
         if (!out.preedit.empty()) {
             // Underlined; highlighted too while the menu shows an entry other than entry 0.
-            fcitx::TextFormatFlags flags = fcitx::TextFormatFlag::Underline;
+            // DontCommit: at focus out Fcitx5 (or a client with ClientUnfocusCommit) would commit
+            // the preedit itself, and then reset flushes the engine: the text twice (e2e). The
+            // engine's flush is the one commit (spec §7).
+            fcitx::TextFormatFlags flags{fcitx::TextFormatFlag::Underline, fcitx::TextFormatFlag::DontCommit};
             if (!out.menu.empty() && out.selected != out.zero) flags |= fcitx::TextFormatFlag::HighLight;
             preedit.append(out.preedit, flags);
             preedit.setCursor(static_cast<int>(out.preedit.size()));

@@ -35,3 +35,20 @@ jobs:
         with:
           name: ara-ime-linux-${{ steps.arch.outputs.arch }}
           path: linux/build/stage/ara
+
+  # bada-linux's own tests (linux/host/tools/test.sh: core tests plain and with ASan/UBSan, Fcitx5 and
+  # IBus end to end, against bada-compatible's shout), for changes made in linux/host before they go
+  # upstream.
+  host:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: ara-ime
+      - uses: actions/checkout@v4
+        with:
+          repository: team-mirae/bada-compatible
+          path: bada-compatible
+      - name: linux/host/tools/test.sh
+        run: BADA_COMPATIBLE=$PWD/bada-compatible ara-ime/linux/host/tools/test.sh

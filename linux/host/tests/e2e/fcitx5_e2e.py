@@ -104,7 +104,7 @@ check_eq(a.field.preedit, "HI", "⇧変換 moves back")
 # Focus out commits what's staged.
 a.ic.FocusOut()
 pump()
-check(a.field.text.endswith("HI"), f"focus out commits ({a.field.text!r})")
+check_eq(a.field.text, "HELLO world\nabHI", "focus out commits, once")
 
 # A second input context follows the session's mode; 無変換 there switches for everyone.
 b = Client(program="other")
