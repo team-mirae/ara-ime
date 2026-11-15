@@ -5,7 +5,6 @@ __pycache__/
 /tools/analysis/.venv/
 /tools/analysis/out_*.json
 /engine/target/
-/mac/build/
 *.log
 /engine/tools/cache/
 /utils/learner-app/data/
