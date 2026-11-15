@@ -82,7 +82,7 @@ check(state is not None and state.get("mode") == "muhenkan" and state["host"]["i
       f"state file in muhenkan ({state})")
 
 # 変換: henkan, bada plain alone (the engine's default; docs/layouts/16-bada-plain.md, deterministic):
-# ㅇ ㅏ ㄴ ㄴ ㅕ ㅇ is 안녕. Space commits it.
+# ㅇ ㅏ ㄴ ㄴ ㅕ ㅇ is 안녕. Space commits it, then types a space (bada spec §6: commit, then the key).
 a.type("henkan")
 state = read_state(IME)
 check(state is not None and state.get("mode") == "henkan", f"state file in henkan ({state})")
@@ -90,14 +90,16 @@ a.type("j f l l r j")
 check_eq(a.field.preedit, "안녕", "henkan composes bada plain")
 a.type("Space")
 check_eq(a.field.preedit, "", "Space commits")
-check_eq(a.field.text, "hello 안녕", "what showed is committed")
+check_eq(a.field.text, "hello 안녕 ", "what showed is committed, then the space")
 
 # Focus out commits what's staged.
 a.type("j f l")
 check_eq(a.field.preedit, "안", "staged")
 a.ic.FocusOut()
 pump()
-check_eq(a.field.text, "hello 안녕안", "focus out commits")
+check_eq(a.field.text, "hello 안녕 안", "focus out commits, once")
+if a.field.text != "hello 안녕 안":
+    print(f"  commits: {a.field.commits!r}", flush=True)
 
 # 無変換: back to muhenkan, for every input context.
 b = Client(program="other")

@@ -25,8 +25,9 @@ jobs:
         run: |
           docker run --rm -v "$PWD:/src" -w /src ara-linux sh -c '
             dbus-uuidgen --ensure
-            linux/build.sh && linux/test.sh
-            chown -R '"$(id -u):$(id -g)"' linux/build'
+            linux/build.sh && linux/test.sh; status=$?
+            chown -R '"$(id -u):$(id -g)"' linux/build
+            exit $status'
       - name: Arch
         id: arch
         run: echo "arch=$(uname -m)" >> "$GITHUB_OUTPUT"
