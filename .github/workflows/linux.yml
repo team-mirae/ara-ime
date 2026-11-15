@@ -1,0 +1,36 @@
+# ara ime on Linux, x86_64 and arm64: linux/build.sh (bada's engine as libara_engine.so, bada-linux's
+# Fcitx5 addon and IBus engine, the staged IME) and linux/test.sh (ara through a fresh fcitx5, over
+# D-Bus), in bada-linux's build machine (linux/host/tools/Dockerfile: Debian trixie). The staged IME
+# is uploaded per architecture.
+name: linux
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  linux:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-24.04, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build machine
+        run: docker build -q -t ara-linux -f linux/host/tools/Dockerfile linux/host/tools
+      - name: linux/build.sh and linux/test.sh
+        run: |
+          docker run --rm -v "$PWD:/src" -w /src ara-linux sh -c '
+            dbus-uuidgen --ensure
+            linux/build.sh && linux/test.sh
+            chown -R '"$(id -u):$(id -g)"' linux/build'
+      - name: Arch
+        id: arch
+        run: echo "arch=$(uname -m)" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ara-ime-linux-${{ steps.arch.outputs.arch }}
+          path: linux/build/stage/ara

@@ -1,0 +1,35 @@
+{
+  "name": "ara",
+  "description": "ara ime (아라 입력기 · アラIME): bada ime's engine on Linux. Muhenkan types QWERTY; henkan types every enabled layout at once and ranks the readings. Settings: ~/.config/bada-linux/bada-ara.json.",
+  "library": "{arch}/libara_engine.so",
+  "prefix": "bada",
+  "data": [
+    "data/ko-words.tsv",
+    "data/en-words.txt",
+    "data/hanja.tsv",
+    "data/oecd.tsv",
+    "data/ja-words.txt",
+    "data/kanji.bin",
+    "data/ko-jamo-4gram.bin",
+    "data/symbols.tsv",
+    "data/emoji.tsv",
+    "data/unicode-names.tsv",
+    { "concat": [
+      "data/en-ko/common.tsv",
+      { "text": "#! brands\n" },
+      { "dir": "data/en-ko/brands", "suffix": ".tsv" },
+      { "text": "#! order\n" },
+      "data/en-ko/shared-order.tsv"
+    ] }
+  ],
+  "settings": {},
+  "mode": "muhenkan",
+  "keyboard": "jis",
+  "linux": {
+    "id": "bada-ara",
+    "display_name": "ara ime",
+    "language": "ja",
+    "layout": "jp",
+    "labels": { "henkan": "아", "muhenkan": "A" }
+  }
+}

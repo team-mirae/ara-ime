@@ -11,3 +11,4 @@ __pycache__/
 /web/dist/
 /web/.vercel/
 /web/wasm/target/
+/linux/build/
