@@ -8,7 +8,7 @@
   </h3>
 
   <p align="center">
-	An input method for multilinguals, on Linux.
+	An input method for multilinguals, on Linux, and arch btw.
   </p>
 </p>
 
